@@ -1,0 +1,26 @@
+<?php
+$LANG['session_expired'] = 'Sessie verlopen!';
+$LANG['share_not_found'] = 'De ingevoerde locatiedeling bestaat niet!';
+$LANG['group_share_not_adoptable'] = 'Groepsdelingen kunnen niet geadopteerd worden!';
+$LANG['incorrect_password'] = 'Incorrect wachtwoord!';
+$LANG['share_too_long'] = 'Deelperiode is te lang!';
+$LANG['interval_too_long'] = 'Update frequentie is te lang!';
+$LANG['group_pin_invalid'] = 'Ongeldige groep PIN!';
+$LANG['location_invalid'] = 'Ongeldige locatie!';
+$LANG['config_missing'] = 'Kan config.php niet vinden!';
+$LANG['interval_too_short'] = 'Update frequentie is te kort!';
+$LANG['no_memcached_ext'] = 'Geen compatibele memcached extensie (memcache of memcached) is ingeschakeld in uw PHP configuratie!';
+$LANG['share_mode_unsupported'] = 'Niet ondersteunde deelmodus!';
+$LANG['no_redis_ext'] = 'Geen compatibele redis extensie (redis) is ingeschakeld in uw PHP configuratie!';
+$LANG['session_invalid'] = 'Ongeldige sessie!';
+$LANG['invalid_storage'] = 'U heeft een ongeldige \'storage_backend\' ingesteld in Hauk!';
+$LANG['share_adoption_not_allowed'] = 'De eigenaar van de ingevoerde deling staat adoptie niet toe!';
+$LANG['e2e_adoption_not_allowed'] = 'Deze deling is met wachtwoord beveiligd en kan niet geadopteerd worden!';
+$LANG['group_e2e_unsupported'] = 'Groepsdelingen kunnen niet met een wachtwoord beveiligd worden!';
+$LANG['username_required'] = 'Gebruikersnaam vereist!';
+$LANG['ldap_search_ambiguous'] = 'Meerdere gebruikers gevonden - het LDAP filter is te breed!';
+$LANG['ldap_user_unauthorized'] = 'Gebruiker niet gevonden, niet geauthoriseerd of wachtwoord onjuist!';
+$LANG['ldap_search_failed'] = 'Fout tijdens het opzoeken van de gebruiker op de LDAP server!';
+$LANG['ldap_connection_failed'] = 'Kan geen verbinding maken met de LDAP server!';
+$LANG['ldap_config_error'] = 'Niet gelukt om LDAP connectieparameters in te stellen!';
+$LANG['ldap_extension_missing'] = 'De LDAP extensie is niet actief in uw PHP configuratie!';

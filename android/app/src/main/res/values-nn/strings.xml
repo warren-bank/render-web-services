@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_heading">Open løysing for posisjonsdeling</string>
+    <string name="pref_cryptServer_title">Serveradresse</string>
+    <string name="pref_cryptPassword_title">Passord</string>
+    <string name="label_duration">Varigheit:</string>
+    <string name="pref_interval_title">Intervall (sekund)</string>
+    <string name="label_mode">Delingsmodus:</string>
+    <string name="label_allow_adopt">Tillat adopsjon:</string>
+    <string name="label_explain_adopt">(Kva er dette\?)</string>
+    <string name="label_nickname">Kallenamn:</string>
+    <string name="label_pin">Gruppekode:</string>
+    <string name="label_status">Status:</string>
+    <string name="label_share_url">Delings-ID/link:</string>
+    <string name="btn_start">Start deling</string>
+    <string name="btn_stop">Stopp deling [%s]</string>
+    <string name="btn_link">Lag ein ny delingslink</string>
+    <string name="btn_stop_short">Stopp</string>
+    <string name="btn_share_short">Del</string>
+    <string name="label_heading_links">Aktive delinger</string>
+    <string name="link_type_solo">Berre deg</string>
+    <string name="link_type_group_host">Gruppedeling (leiar)</string>
+    <string name="link_type_group_member">Gruppedeling (medlem)</string>
+    <string name="label_status_none">Lokasjonsdeling inaktiv</string>
+    <string name="label_status_coarse">Ventar på nøyaktig posisjon…</string>
+    <string name="label_status_ok">Lokasjonsdeling aktiv!</string>
+    <string name="label_pin_head">DIN GRUPPEKODE:</string>
+    <string name="explain_adopt_title">Delingsadopsjon</string>
+    <string name="adopt_title">Adoptér ein annens sesjon</string>
+    <string name="adopt_body">Du kan adoptera ein annan persons sesjon for å innlemma han/henne i denne gruppa. Lim inn linken eller delings-IDen til den personen du ønsker å adoptera (t.d. %s\?XXXX-XXXX) og tildel han/henne eit kallenavn.</string>
+    <string name="create_link_title">Lag ein ny delingslink</string>
+    <string name="create_link_body">Du kan laga fleire delingslinker som andre kan bruka til å få tilgang til den delte posisjonen din. Kvar link kan stoppast individuelt, noko som gir deg detaljert kontroll over kven som kan sjå posisjonen din til kvar og ei tid. 
+\n 
+\nAndre linkar du opprettar på denne måten vil vera én-persons-delinger og dei vil berre visa posisjonen din.</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_cancel">Avbryt</string>
+    <string name="btn_yes">Ja</string>
+    <string name="btn_no">Nei</string>
+    <string name="btn_create">Opprett</string>
+    <string name="action_copy">Kopiér link</string>
+    <string name="action_copied">Link kopiert frå Hauk</string>
+    <string name="action_stop">Stopp deling</string>
+    <string name="notify_body">Hauk deler posisjonen din til %s</string>
+    <string name="progress_connect_title">Koplar til</string>
+    <string name="progress_connect_body">Koplar til Hauk…</string>
+    <string name="progress_adopt_title">Adopterer</string>
+    <string name="progress_adopt_body">Adopterer %s…</string>
+    <string name="progress_new_link_title">Opprettar link</string>
+    <string name="label_status_wait">Ventar på første GNSS-posisjon…</string>
+    <string name="progress_new_link_body">Opprettar ein ny delingslink…</string>
+    <string name="err_client">Ugyldige innstillingar</string>
+    <string name="err_connect">Tilkoplingsfeil</string>
+    <string name="err_server">Serverfeil</string>
+    <string name="err_malformed_url">Serveradressa du skreiv inn er ugyldig.</string>
+    <string name="err_location_disabled">Stadtenester er deaktivert. Vennlegast aktiver høgnøyaktighietsstadstenester for å dela posisjonen din.</string>
+    <string name="err_empty">Serveren returnerte ein tom respons.</string>
+    <string name="err_response_code">Mottok HTTP %s frå serveren!</string>
+    <string name="err_outdated">Serveren er utdatert</string>
+    <string name="err_ver_group">Serveren støttar ikkje delingsgrupper. Delingsgrupper er støtta i versjon %s og høgare; serveren køyrer no versjon %s. Delingen din vart omgjort til ein ein-persons-sesjon.</string>
+    <string name="ok_title">Oppkopling vellykka</string>
+    <string name="ok_message">Posisjonen din blir delt! Klikk på del-knappen for å kopiera visningslinken for delingen din.</string>
+    <string name="ended_title">Deling avslutta</string>
+    <string name="ended_message">Sesjonen din er avslutta.</string>
+    <string name="adopted_title">Deling adoptert</string>
+    <string name="adopted_body">%s vart lagt til i gruppa di!</string>
+    <string name="resume_title">Gjenoppta sesjon</string>
+    <string name="resume_body">Du har ein påbyrja sesjon som ikkje er avslutta: 
+\n 
+\nAktive linkar: %d
+\nGår ut: %s
+\n 
+\nØnsker du å gjenoppta denne sesjonen\?</string>
+    <string name="link_added_title">Link oppretta</string>
+    <string name="link_added_body">Ein ny link vart oppretta for den delte posisjonen din! Klikk på del-knappen for å kopiera visningslinken for den nye delingen din.</string>
+    <string name="req_perms_title">Tilgang krevjast</string>
+    <string name="req_perms_message">Denne appen krev tilgang til stadtenester for å fungera, men denne tilgangen har ikkje vorte gitt endå. Ver vennleg og godta følgjande tilgangsførespurnad, og klikk på startknappen for å prøva på nytt.</string>
+    <string name="share_via">Del Hauk-lenkje via</string>
+    <string name="share_subject">Følg posisjonen min på Hauk!</string>
+    <string name="err_missing_perms">Tilgang til stadtenester krevjast for å bruka denne appen.</string>
+    <string name="label_pin_help">Del denne koden med dei andre i gruppa di for å la dei kopla seg på og bli med i delingsgruppa</string>
+    <string name="explain_adopt_body">Hauk lèt deg laga delingssesjoner for deg sjølv i tillegg til for grupper. Viss nokon lagar ei gruppe, får dei ein kode som andre kan bruka til å bli med på å dela posisjonen sin til gruppa. 
+\n 
+\nPersonen som opprettar gruppa har òg moglegheit til å legga til andre som allereie deler posisjonen sin inn i gruppa. Denne prosessen kallast for adopsjon. 
+\n 
+\nDu kan avgjera om du ønsker å la andre innlemma deg i ei gruppe ved å kryssa av i denne boksen. 
+\n 
+\nViss du aktiverer dette og deler posisjonen din med ein gjeng med venner, og nokon andre i gjengen òg ønsker å dela posisjonen sin, kan dei oppretta ein delingsgruppe og legga deg til på kartet sitt, slik at de begge dukkar opp på same kart. Dette kan vera nyttig viss du t.d. køyrer bil og ikkje kan bruka telefonen din, sidan adopsjon av den delte posisjonen din av andre ikkje krev noka handling frå deg.</string>
+    <string name="chk_allow_adopt">La andre legga meg til i ein delingsgruppe når eg deler posisjonen min</string>
+    <string name="btn_adopt">Slå saman ein eksisterande link</string>
+    <string name="sel_mode_opt_join_group">Bli med i ein delingsgruppe</string>
+    <string name="sel_mode_opt_alone">Berre del min eigen posisjon</string>
+    <string name="sel_mode_opt_create_group">Lag ein delingsgruppe</string>
+    <string name="sel_unit_opt_minutes">minutt</string>
+    <string name="sel_unit_opt_hours">tim(ar)</string>
+    <string name="sel_unit_opt_days">dag(ar)</string>
+    <string name="authorize_question">Ønskjer du å tillata at delingssesjoner kan startast frå kringkastinger med denne identifikasjonen ved seinare høve\?</string>
+    <string name="authorize_body">Hauk fekk og blokkerte eit forsøk på å starta ein delingssesjon frå ein kringkastingskjelde som identifiserte seg som</string>
+    <string name="authorize_header">Godkjenningsførespurnad</string>
+    <string name="btn_show_settings">Åpne innstillinger</string>
+    <string name="btn_dismiss">Lukk</string>
+    <string name="battery_savings_body">Det ser ut til at du bruker ein %s-eining. Desse einingane har særleg strenge batterisparingsinnstillingar som kan hindra Hauk frå å senda posisjonsoppdateringar medan programmet køyrer i bakgrunnen.
+\n
+\nDu blir oppfordra til å tilsjå at Hauk er unnateke frå batterisparing for å hindra at appen sluttar å verka utan forvarsel.
+\n
+\nDenne meldinga vil ikkje visast igjen.</string>
+    <string name="battery_savings_title">Aggressiv batterisparing</string>
+    <string name="manufacturer_huawei">Huawei</string>
+    <string name="manufacturer_oneplus">OnePlus</string>
+    <string name="manufacturer_xiaomi">Xiaomi</string>
+    <string name="pref_requestLink_hint">&lt;tilfeldig generert&gt;</string>
+    <string name="pref_requestLink_title">Føretrekt link-ID</string>
+    <string name="pref_cryptUsername_hint">&lt;valfritt&gt;</string>
+    <string name="pref_cryptUsername_title">Brukarnamn</string>
+    <string name="err_ver_e2e">Serveren støttar ikkje ende-til-ende-kryptering. Ende-til-ende-kryptering er støtta i versjon %s og høgare; serveren køyrer no versjon %s. Delingen din vil bli oppretta utan ende-til-ende-kryptering for å behalda kompatibilitet.</string>
+    <string name="pref_e2ePassword_title">Krypteringspassord</string>
+    <string name="pref_enableE2E_on">Aktiver ende-til-ende-kryptering</string>
+    <string name="pref_enableE2E_title">Krev passord for delingar</string>
+    <string name="label_status_disconnected">Kan ikkje nå servaren akkurat no</string>
+    <string name="title_activity_settings">Innstillingar</string>
+    <string name="prefs_header_connection">Tilkopling</string>
+    <string name="password_mask">Trykk for å endra</string>
+    <string name="pref_enableE2E_off">Deaktiver ende-til-ende-kryptering</string>
+    <string name="action_settings">Innstillingar</string>
+    <string name="err_proxy_failure">Ein feil oppstod under oppslag av vertsnamnet til den konfigurerte proxyen: %s</string>
+    <string name="err_proxy_host_resolution">IP-adressa til den konfigurerte proxyen (%s) kunne ikkje slåast opp!</string>
+    <string name="progress_resolving_proxy">Slår opp proxyens vertsnamn…</string>
+    <string name="proxy_mode_socks">SOCKS 4/5</string>
+    <string name="proxy_mode_http">HTTP</string>
+    <string name="proxy_mode_none">Ikkje bruk proxy</string>
+    <string name="proxy_mode_default">Bruk standard for systemet</string>
+    <string name="pref_proxyPort_title">Proxy-port</string>
+    <string name="pref_proxyHost_title">Proxy-vertsnamn</string>
+    <string name="pref_proxyType_title">Proxy</string>
+    <string name="tls_validation_none_for_onion">Deaktiver sertifikatkjede- og vertsnamnvalidering for .onion-vertar (ikkje anbefalt)</string>
+    <string name="tls_validation_no_anchor_onion">Deaktiver sertifikatkjedevalidering for .onion-vertar (ikkje anbefalt)</string>
+    <string name="tls_validation_all">Alltid valider sertifikat (anbefalt)</string>
+    <string name="pref_tlsCertValidation_title">HTTPS-sertifikatvalidering</string>
+    <string name="pref_connectTimeout_title">Tidsavbrot for oppkopling (sekund)</string>
+    <string name="night_mode_never">Aldri</string>
+    <string name="night_mode_always">Alltid</string>
+    <string name="night_mode_battery">Når batterisparer er på</string>
+    <string name="night_mode_system">Følg systeminnstillingar</string>
+    <string name="prefs_nightMode_title">Nattmodus</string>
+    <string name="prefs_header_appearance">Utsjåande</string>
+    <string name="err_server_not_configured">Du har ikkje stilt inn ein servar endå. Skriv inn informasjon om servaren din i innstillingar og prøv igjen.</string>
+    <string name="about_report_issue_title">Rapportér om feil</string>
+    <string name="about_source_code_title">Kjeldekode</string>
+    <string name="about_version_title">Appversjon</string>
+    <string name="prefs_header_about">Om Hauk</string>
+    <string name="pref_confirmStop_off">Ikkje be om stadfesting når du stoppar delingar i appen</string>
+    <string name="pref_confirmStop_on">Be om stadfesting når du stoppar delingar i appen</string>
+    <string name="pref_confirmStop_title">Stadfest før delingar blir avslutta</string>
+    <string name="pref_minUpdateDistance_title">Minste avstand mellom oppdateringar (meter)</string>
+    <string name="err_no_nickname">Du må stilla inn eit kallenamn før du kan bli med i delingsgruppar. Ver vennleg og vel eit kallenamn og prøv igjen.</string>
+    <string name="err_invalid_duration">Varigheita du skreiv inn er ugyldig. Ver vennleg og skriv inn ei anna varigheit.</string>
+    <string name="btn_remember">Ikkje vis igjen</string>
+    <string name="dialog_confirm_stop_share">Er du sikker på at du vil sletta denne linken\?</string>
+    <string name="dialog_confirm_stop_body">Er du sikker på at du vil slutta å dela posisjonen din\?</string>
+    <string name="dialog_confirm_stop_title">Avslutt deling\?</string>
+    <string name="pref_noGnssFallback_title">Fall tilbake til nettverksposisjon viss GNSS er utilgjengeleg i (sekund)</string>
+    <string name="label_heading_no_links">Ingen aktive delinger</string>
+    <string name="label_status_lost_gnss">Ventar på posisjon…</string>
+    <string name="pref_hideLogo_off">Vis Hauk-logoen på appens startside</string>
+    <string name="pref_hideLogo_on">Skjul Hauk-logoen frå appens startside</string>
+    <string name="prefs_hideLogo_title">Skjul logoen på framsida</string>
+</resources>

@@ -1,0 +1,26 @@
+<?php
+$LANG['config_missing'] = 'Unable to find config.php!';
+$LANG['no_memcached_ext'] = 'No compatible memcached extension (memcache or memcached) is enabled in your PHP config!';
+$LANG['no_redis_ext'] = 'No compatible redis extension (redis) is enabled in your PHP config!';
+$LANG['invalid_storage'] = 'You have set an invalid storage_backend in Hauk!';
+$LANG['session_expired'] = 'Session expired!';
+$LANG['share_not_found'] = 'The given share does not exist!';
+$LANG['group_share_not_adoptable'] = 'You cannot adopt group shares!';
+$LANG['share_adoption_not_allowed'] = 'The host of the given share does not permit adoption!';
+$LANG['incorrect_password'] = 'Incorrect password!';
+$LANG['username_required'] = 'Username required!';
+$LANG['share_too_long'] = 'Share period is too long!';
+$LANG['interval_too_long'] = 'Update interval is too long!';
+$LANG['interval_too_short'] = 'Update interval is too short!';
+$LANG['share_mode_unsupported'] = 'Unsupported share mode!';
+$LANG['group_pin_invalid'] = 'Invalid group PIN!';
+$LANG['session_invalid'] = 'Invalid session!';
+$LANG['location_invalid'] = 'Invalid location!';
+$LANG['group_e2e_unsupported'] = 'Group shares cannot be password protected!';
+$LANG['e2e_adoption_not_allowed'] = 'This share is password protected and cannot be adopted!';
+$LANG['ldap_extension_missing'] = 'The ldap extension is not enabled in your PHP config!';
+$LANG['ldap_config_error'] = 'Failed to set LDAP connection parameters!';
+$LANG['ldap_connection_failed'] = 'Failed to connect to the LDAP server!';
+$LANG['ldap_search_failed'] = 'Failed to look up user on the LDAP server!';
+$LANG['ldap_user_unauthorized'] = 'User not found, not authorized, or incorrect password!';
+$LANG['ldap_search_ambiguous'] = 'Matched multiple users - the LDAP filter is too broad!';

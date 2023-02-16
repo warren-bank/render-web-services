@@ -1,0 +1,26 @@
+<?php
+$LANG['location_invalid'] = 'Ungültiger Standort!';
+$LANG['session_invalid'] = 'Ungültige Sitzung!';
+$LANG['group_pin_invalid'] = 'Ungültiger Gruppen PIN!';
+$LANG['share_mode_unsupported'] = 'Nicht unterstützter Freigabemodus!';
+$LANG['interval_too_short'] = 'Der Aktualisierungsintervall ist zu kurz!';
+$LANG['interval_too_long'] = 'Der Aktualisierungsintervall ist zu lang!';
+$LANG['share_too_long'] = 'Der Freigabezeitraum ist zu lang!';
+$LANG['incorrect_password'] = 'Falsches Passwort!';
+$LANG['share_adoption_not_allowed'] = 'Der Host der angegebenen Freigabe erlaubt keine Übernahme!';
+$LANG['group_share_not_adoptable'] = 'Sie können keine Gruppenfreigabe übernehmen!';
+$LANG['share_not_found'] = 'Die angegebene Freigabe existiert nicht!';
+$LANG['session_expired'] = 'Sitzung abgelaufen!';
+$LANG['invalid_storage'] = 'Ein ungültiges storage_backend wurde in Hauk gesetzt!';
+$LANG['no_redis_ext'] = 'Es ist keine kompatible redis Erweiterung (redis) in Ihrer PHP-Konfiguration aktiviert!';
+$LANG['no_memcached_ext'] = 'Es ist keine kompatible memcached Erweiterung (memcache oder memcached) in Ihrer PHP-Konfiguration aktiviert!';
+$LANG['config_missing'] = 'config.php konnte nicht gefunden werden!';
+$LANG['username_required'] = 'Benutzername erforderlich!';
+$LANG['e2e_adoption_not_allowed'] = 'Diese Freigabe ist passwortgeschützt und kann nicht übernommen werden!';
+$LANG['group_e2e_unsupported'] = 'Gruppenfreigaben können nicht passwortgeschützt werden!';
+$LANG['ldap_search_ambiguous'] = 'Mehrere Benutzer gefunden - der LDAP Filter ist zu allgemein!';
+$LANG['ldap_user_unauthorized'] = 'Benutzer nicht gefunden, nicht autorisiert oder falsches Passwort!';
+$LANG['ldap_search_failed'] = 'Benutzer konnte am LDAP Server nicht gefunden werden!';
+$LANG['ldap_connection_failed'] = 'Fehler beim Verbinden zum LDAP Server!';
+$LANG['ldap_config_error'] = 'LDAP-Verbindungsparameter konnten nicht eingestellt werden!';
+$LANG['ldap_extension_missing'] = 'Die LDAP Erweiterung ist in der PHP config nicht aktiviert!';
