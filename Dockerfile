@@ -3,15 +3,13 @@ COPY    backend-php/ /var/www/html/
 COPY    frontend/ /var/www/html/
 COPY    docker/start.sh .
 
-RUN     apt-get update && \
-        apt-get install -y memcached libmemcached-dev zlib1g-dev libldap2-dev && \
-        pecl install memcached && \
-        docker-php-ext-enable memcached && \
-        docker-php-ext-configure ldap --with-libdir=lib/*-linux-gnu*/ && \
-        docker-php-ext-install ldap
+RUN     pecl install redis && \
+        docker-php-ext-enable redis
 
 EXPOSE  80/tcp
 VOLUME  /etc/hauk
+COPY    docker/config.php     /etc/hauk
+COPY    docker/users.htpasswd /etc/hauk
 
 STOPSIGNAL SIGINT
 RUN     chmod +x ./start.sh
