@@ -1,20 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-stop_all() 
-{
-    echo "Stopping apache"
-    kill $APACHE_PID
-    rm -rf /run/apache2/apache2.pid
+function stop_apache {
+  apache_pid="$1"
+
+  if [ -e "$apache_pid" ];then
+    kill -TERM `cat "$apache_pid"`
+    rm -rf "$apache_pid"
+  fi
 }
 
-trap stop_all INT TERM
+stop_apache '/run/apache2/apache2.pid'
+stop_apache '/usr/local/apache2/logs/httpd.pid'
 
 apachectl -D FOREGROUND &
-APACHE_PID=$!
-
-echo "Started"
-wait $APACHE_PID
-trap - TERM INT
-wait $APACHE_PID
-
-echo "Done"
