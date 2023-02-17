@@ -12,4 +12,5 @@ function stop_apache {
 stop_apache '/run/apache2/apache2.pid'
 stop_apache '/usr/local/apache2/logs/httpd.pid'
 
-apachectl -D FOREGROUND &
+apachectl -D FOREGROUND
+exit 0
