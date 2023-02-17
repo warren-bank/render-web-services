@@ -1,43 +1,27 @@
-FROM alpine:3.14
+FROM php:7.4-apache
 
 # based on:
-#   https://github.com/rsubr/php-apache-alpine/blob/master/Dockerfile
+#   https://github.com/render-examples/open-web-analytics/blob/master/Dockerfile
 
-# Install apache and php8
-RUN apk add --no-cache \
-        php8 \
-        php8-apache2 \
-        php8-ctype \
-        php8-curl \
-        php8-fileinfo \
-        php8-gettext \
-        php8-intl \
-        php8-json \
-        php8-mbstring \
-        php8-pecl-redis \
-        php8-posix \
-        php8-zip
+COPY    --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
+RUN     install-php-extensions redis
+RUN     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-RUN     mkdir -p              /var/www/html
-COPY    backend-php/          /var/www/html/
-COPY    frontend/             /var/www/html/
-COPY    docker/apache2.conf   /etc/apache2/conf.d
-COPY    docker/start.sh       .
+COPY    backend-php/ /var/www/html/
+COPY    frontend/    /var/www/html/
 
-VOLUME  /etc/hauk
-COPY    docker/config.php     /etc/hauk
-COPY    docker/users.htpasswd /etc/hauk
+RUN     mkdir -p /etc/hauk
+COPY    docker/config.php     /etc/hauk/
+COPY    docker/users.htpasswd /etc/hauk/
 
-# Set file and directory permissions
-RUN     chmod +x ./start.sh
-RUN     chown apache /var/www/html ./start.sh /etc/hauk /run/apache2 /var/log/apache2
+RUN chown -R www-data:www-data /var/www/html/ && \
+    chmod -R 0750              /var/www/html/
 
-# Grant 'apache' non-root user the ability to bind to port 80
-RUN apk add --no-cache libcap && \
-        setcap 'cap_net_bind_service=+ep' /usr/sbin/httpd && \
-        apk del libcap
+RUN chown -R www-data:www-data /etc/hauk/ && \
+    chmod -R 0750              /etc/hauk/
 
-EXPOSE  80/tcp
-USER    apache
+COPY    docker/docker-entrypoint.sh /
+RUN     chmod +x /docker-entrypoint.sh
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
-CMD     ["./start.sh"]
+CMD ["apache2-foreground"]
