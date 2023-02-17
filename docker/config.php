@@ -39,15 +39,19 @@ function get_velocity_unit() {
         return $default_value;
 }
 
-const CONFIG = array(
-    "storage_backend"       => REDIS,
-    "redis_host"            => constant(getenv("REDIS_HOST", true)),
-    "redis_port"            => constant(getenv("REDIS_PORT", true)),
-    "redis_use_auth"        => false,
-    "redis_auth"            => '',
-    "redis_prefix"          => 'hauk',
-    "auth_method"           => constant(get_auth_method()),
-    "password_hash"         => constant(getenv("PASSWORD_HASH", true)),
-    "velocity_unit"         => constant(get_velocity_unit()),
-    "public_url"            => constant(getenv("PUBLIC_URL", true))
-);
+function get_config() {
+    return array(
+        "storage_backend"       => REDIS,
+        "redis_host"            => getenv("REDIS_HOST", true),
+        "redis_port"            => getenv("REDIS_PORT", true),
+        "redis_use_auth"        => false,
+        "redis_auth"            => '',
+        "redis_prefix"          => 'hauk',
+        "auth_method"           => get_auth_method(),
+        "password_hash"         => getenv("PASSWORD_HASH", true),
+        "velocity_unit"         => get_velocity_unit(),
+        "public_url"            => getenv("PUBLIC_URL", true)
+    );
+}
+
+define('CONFIG', get_config());
