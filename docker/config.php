@@ -9,19 +9,6 @@ if ((get_auth_method() == PASSWORD) && !isset($_ENV["PASSWORD_HASH"]))
 if (!isset($_ENV["PUBLIC_URL"]))
   die("Required environment variable is not defined: PUBLIC_URL\n");
 
-const CONFIG = array(
-    "storage_backend"       => REDIS,
-    "redis_host"            => $_ENV["REDIS_HOST"],
-    "redis_port"            => $_ENV["REDIS_PORT"],
-    "redis_use_auth"        => false,
-    "redis_auth"            => '',
-    "redis_prefix"          => 'hauk',
-    "auth_method"           => get_auth_method(),
-    "password_hash"         => $_ENV["PASSWORD_HASH"],
-    "velocity_unit"         => get_velocity_unit(),
-    "public_url"            => $_ENV["PUBLIC_URL"]
-);
-
 function get_auth_method() {
     return (
         isset($_ENV["AUTH_METHOD"]) &&
@@ -39,3 +26,16 @@ function get_velocity_unit() {
     else
         return MILES_PER_HOUR;
 }
+
+const CONFIG = array(
+    "storage_backend"       => REDIS,
+    "redis_host"            => constant($_ENV["REDIS_HOST"]),
+    "redis_port"            => constant($_ENV["REDIS_PORT"]),
+    "redis_use_auth"        => false,
+    "redis_auth"            => '',
+    "redis_prefix"          => 'hauk',
+    "auth_method"           => constant(get_auth_method()),
+    "password_hash"         => constant($_ENV["PASSWORD_HASH"]),
+    "velocity_unit"         => constant(get_velocity_unit()),
+    "public_url"            => constant($_ENV["PUBLIC_URL"])
+);
