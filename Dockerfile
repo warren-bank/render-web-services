@@ -64,6 +64,15 @@ RUN mkdir -p /tmp/build_alps
 RUN go build -tags "$ALPS_ADDITIONAL_BUILD_TAGS" -o /tmp/build_alps ${ALPS_GOFLAGS} ./cmd/alps
 RUN command install -m 0755 /tmp/build_alps/alps /pkg/usr/local/bin
 
+ARG ALPS_THEME=""
+
+RUN <<EOF
+  if [ -n "$ALPS_THEME" -a -d "/alps/themes/${ALPS_THEME}" ]; then
+    mkdir -p /pkg/data/themes
+    mv "/alps/themes/${ALPS_THEME}" "/pkg/data/themes/${ALPS_THEME}"
+  fi
+EOF
+
 # --------------------------------------------------------------------
 # build: Docker image
 
@@ -105,8 +114,9 @@ RUN mkdir -p /data/tls
 COPY --from=build-env /pkg/data/fullchain.pem  /data/tls/fullchain.pem
 COPY --from=build-env /pkg/data/privkey.pem    /data/tls/privkey.pem
 COPY --from=build-env /pkg/data/maddy.conf     /data/maddy.conf
-COPY --from=build-env /pkg/usr/local/bin/maddy /bin/
-COPY --from=build-env /pkg/usr/local/bin/alps  /bin/
+COPY --from=build-env /pkg/data/themes         /data/themes
+COPY --from=build-env /pkg/usr/local/bin/maddy /bin/maddy
+COPY --from=build-env /pkg/usr/local/bin/alps  /bin/alps
 
 # ================== SSH:
 EXPOSE 22
@@ -128,6 +138,9 @@ ARG ALPS_THEME=""
 RUN <<EOF
   cat >'/bin/entry_point.sh' <<EOENTRY
 #!/bin/sh
+
+# alps looks for themes in ./themes
+cd /data
 
 if [ "$ENABLE_SSHD" = "true" -a -x /usr/sbin/sshd ]; then
   echo 'starting SSH server'
