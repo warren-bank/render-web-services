@@ -2,13 +2,24 @@ FROM golang:1.23-alpine AS build-env
 
 RUN set -ex && \
     apk upgrade --no-cache --available && \
-    apk add --no-cache build-base git
+    apk add --no-cache build-base openssl git
+
+RUN mkdir -p /pkg/data
+
+# --------------------------------------------------------------------
+# make: self-signed certificate
+
+ARG MAIL_DOMAIN=""
+
+COPY ./crt/ca.crt /pkg/data/ca.crt
+COPY ./crt/ca.key /pkg/data/ca.key
+
+COPY ./bin/sign_certificate.sh /tmp/sign_certificate.sh
+RUN chmod 755 /tmp/sign_certificate.sh
+RUN /tmp/sign_certificate.sh
 
 # --------------------------------------------------------------------
 # build: maddy.conf
-
-ARG MAIL_HOSTNAME=""
-ARG MAIL_DOMAIN=""
 
 ARG SQL_DRIVER=""
 ARG SQL_DSN=""
@@ -22,12 +33,8 @@ ARG S3_OBJECT_PREFIX=""
 ARG S3_REGION=""
 ARG S3_CREDS=""
 
-ENV MADDY_HOSTNAME="$MAIL_HOSTNAME"
-ENV MADDY_DOMAIN="$MAIL_DOMAIN"
-
 COPY ./bin/build_maddy_conf.sh /tmp/build_maddy_conf.sh
 RUN chmod 755 /tmp/build_maddy_conf.sh
-RUN mkdir -p /pkg/data
 RUN /tmp/build_maddy_conf.sh >/pkg/data/maddy.conf
 
 # --------------------------------------------------------------------
@@ -66,6 +73,12 @@ RUN set -ex && \
     apk upgrade --no-cache --available && \
     apk add --no-cache ca-certificates
 
+ARG MAIL_HOSTNAME=""
+ENV MADDY_HOSTNAME="$MAIL_HOSTNAME"
+
+ARG MAIL_DOMAIN=""
+ENV MADDY_DOMAIN="$MAIL_DOMAIN"
+
 ARG ROOT_PASSWORD=""
 ENV ENABLE_SSHD=${ROOT_PASSWORD:+true}
 
@@ -87,7 +100,11 @@ RUN <<EOF
   fi
 EOF
 
-COPY --from=build-env /pkg/data/maddy.conf /data/maddy.conf
+RUN mkdir -p /data/tls
+
+COPY --from=build-env /pkg/data/fullchain.pem  /data/tls/fullchain.pem
+COPY --from=build-env /pkg/data/privkey.pem    /data/tls/privkey.pem
+COPY --from=build-env /pkg/data/maddy.conf     /data/maddy.conf
 COPY --from=build-env /pkg/usr/local/bin/maddy /bin/
 COPY --from=build-env /pkg/usr/local/bin/alps  /bin/
 
