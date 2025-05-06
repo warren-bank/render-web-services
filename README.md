@@ -1,0 +1,135 @@
+### [Maddy Mail Server](https://github.com/warren-bank/render-web-services/tree/maddy-email)
+
+#### Servers included in Docker container
+
+1. _Maddy Mail Server_
+   * [git repo](https://github.com/foxcpp/maddy)
+     - customized contents:
+       * [Dockerfile](https://github.com/foxcpp/maddy/blob/v0.8.1/Dockerfile)
+       * [maddy.conf.docker](https://github.com/foxcpp/maddy/blob/v0.8.1/maddy.conf.docker)
+   * relevant docs:
+     - [installation &amp; initial configuration](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/tutorials/setting-up.md)
+     - [SQL query mapping](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/reference/table/sql_query.md)
+       * [PostgreSQL connection string parameters](https://godoc.org/github.com/lib/pq#hdr-Connection_String_Parameters)
+     - [Password table](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/reference/auth/pass_table.md)
+     - [SQL-indexed storage](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/reference/storage/imapsql.md)
+     - [S3-compatible storage](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/reference/blob/s3.md)
+2. _Alps Webmail Server_
+   * [git repo](https://git.sr.ht/~migadu/alps)
+   * relevant docs:
+     - [command-line options](https://git.sr.ht/~migadu/alps/tree/master/item/docs/cli.md)
+3. _OpenSSH_
+
+#### Exposed Ports
+
+* _SSH_
+  - `22`
+* _SMTP_
+  - `25`
+  - `465`
+  - `587`
+* _IMAP_
+  - `143`
+  - `993`
+* _HTTP_
+  - `80`
+* _HTTPS_
+  - `443` (not yet supported)
+
+- - - -
+
+#### Goals
+
+* all data is stored elsewhere
+  - _PostgreSQL_ database
+  - _S3_-compatible storage
+* all configuration is done through Docker build arguments
+
+#### Email Accounts
+
+* no accounts are created for you
+* to manage accounts:
+  - use `ssh` to log in as `root`
+  - use the [_maddy_](https://github.com/foxcpp/maddy/blob/v0.8.1/docs/tutorials/setting-up.md#user-accounts-and-maddy-command) command
+* because all data is stored elsewhere
+  - accounts survive the shutdown and restart of the Docker container
+  - moving the Docker container to a different host requires no data migration
+  - only the services that store the data need to be highly reliable;<br>the site that hosts the Docker container can go out of business,<br>or close your account without any notice&hellip;<br>and it doesn't really matter
+
+#### Security
+
+* _HTTPS_
+  - the _Alps Webmail Server_ has been a [work-in-progress](https://migadu.com/blog/redesign/#the-webmail) for some time
+  - the company that is developing this project hasn't yet put it into production
+  - although the "web framework" library it uses supports _HTTPS_,<br>and has the ability to [automatically obtain TLS certificates](https://echo.labstack.com/docs/cookbook/auto-tls) from _Let's Encrypt_&hellip;<br>_alps_ doesn't [currently use these features](https://git.sr.ht/~migadu/alps/tree/master/item/cmd/alps/main.go#L79)
+
+- - - -
+
+<pre>
+https://render.com/
+https://render.com/docs/free
+
+free tier includes:
+* 750 hours of web service uptime
+  - web service is spun down after 15 minutes of inactivity
+  - web service is spun up as needed, and 1st request can experience a delay of up to 30 seconds
+* 1 Redis instance
+  - ephemeral.. not backed by a disk
+* 1 PostgreSQL
+  - automatically expires 90 days after creation
+
+--------------------------------------------------------------------------------
+
+https://dashboard.render.com/register
+  - no credit card required
+  - only need to provide:
+    * email address
+    * password
+
+https://dashboard.render.com/
+https://dashboard.render.com/billing#free-usage
+
+--------------------------------------------------------------------------------
+
+https://dashboard.render.com/select-repo?type=web
+
+Public Git Repository = https://github.com/warren-bank/render-web-services
+Name                  = warren-bank-maddy-email
+Language              = Docker
+Branch                = maddy-email
+Region                = Oregon (US West)
+Root Directory        = [empty]
+Dockerfile Path       = ./Dockerfile
+Instance Type         = Free (512 MB RAM, 0.1 CPU)
+
+Advanced > Environment Variables:
+=================================
+ROOT_PASSWORD    = root
+
+MAIL_HOSTNAME    = example.org
+MAIL_DOMAIN      = example.org
+
+SQL_DRIVER       = postgres
+SQL_DSN          = host=postgres.example.org port=5432 sslmode=verify-full user=maddy password=maddy dbname=maddy
+
+S3_ENDPOINT      = s3.example.org
+S3_SECURE        = yes
+S3_ACCESS_KEY    = Q3AM3UQ867SPQQA43P2F
+S3_SECRET_KEY    = zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+S3_BUCKET        = maddy-email
+S3_OBJECT_PREFIX = maddy/
+S3_REGION        = 
+S3_CREDS         = 
+
+ALPS_THEME       = alps
+
+</pre>
+
+- - - -
+
+#### Customization
+
+* the name of the web service must be universally unique
+  - ex: `warren-bank-maddy-email`
+  - choose your own
+* the environment variable values
