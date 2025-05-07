@@ -103,6 +103,7 @@ Advanced > Environment Variables:
 =================================
 ROOT_PASSWORD    = root
 ALPS_THEME       = alps
+INIT_COMMAND     = maddy creds create 'postmaster@example.org' --hash 'bcrypt' --password 'postmaster' && maddy imap-acct create 'postmaster@example.org'
 FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
 
 MAIL_HOSTNAME    = example.org
@@ -131,6 +132,9 @@ S3_CREDS         =
 * `ALPS_THEME`
   - can be the name of any subdirectory in [_themes/_](https://git.sr.ht/~migadu/alps/tree/master/item/themes)
   - an undefined or empty value causes _Alps_ to render HTML using its base theme
+* `INIT_COMMAND`
+  - is an arbitrary inline command (or sequence of commands) to execute in a shell during initialization of the container
+  - an undefined or empty value is ignored
 * `FORCE_ACTIVITY`
   - causes a period HTTP request at `FORCE_ACTIVITY_INTERVAL` second intervals
     - default: `300` (ie: every 5 minutes)

@@ -138,6 +138,8 @@ ENTRYPOINT [ "/bin/entry_point.sh" ]
 
 ARG ALPS_THEME=""
 
+ENV INIT_COMMAND=""
+
 # default interval: 5 minutes
 ENV FORCE_ACTIVITY=""
 ENV FORCE_ACTIVITY_INTERVAL="300"
@@ -165,6 +167,11 @@ sleep 15
 if [ -x /bin/alps ]; then
   echo 'starting Alps WebMail server'
   /bin/alps -theme "$ALPS_THEME" -addr ":80" "imap+insecure://127.0.0.1:143" "smtp+insecure://127.0.0.1:587" &
+fi
+
+# allow the user to run initialization commands
+if [ -n "\$INIT_COMMAND" ]; then
+  /bin/sh -c "\$INIT_COMMAND"
 fi
 
 # keep the container alive, while the servers run in the background
