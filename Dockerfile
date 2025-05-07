@@ -82,6 +82,9 @@ RUN set -ex && \
     apk upgrade --no-cache --available && \
     apk add --no-cache ca-certificates
 
+# not required. hint to Docker.
+ENV PORT="80"
+
 ARG MAIL_HOSTNAME=""
 ENV MADDY_HOSTNAME="$MAIL_HOSTNAME"
 
@@ -124,8 +127,8 @@ EXPOSE 22
 EXPOSE 25 465 587
 # ================== IMAP:
 EXPOSE 143 993
-# ================== HTTP/S:
-EXPOSE 80 443
+# ================== HTTP:
+EXPOSE 80
 
 ENTRYPOINT [ "/bin/entry_point.sh" ]
 

@@ -33,8 +33,6 @@
   - `993`
 * _HTTP_
   - `80`
-* _HTTPS_
-  - `443` (not yet supported)
 
 - - - -
 
@@ -59,9 +57,8 @@
 #### Security
 
 * _HTTPS_
-  - the _Alps Webmail Server_ has been a [work-in-progress](https://migadu.com/blog/redesign/#the-webmail) for some time
-  - the company that is developing this project hasn't yet put it into production
-  - although the "web framework" library it uses supports _HTTPS_,<br>and has the ability to [automatically obtain TLS certificates](https://echo.labstack.com/docs/cookbook/auto-tls) from _Let's Encrypt_&hellip;<br>_alps_ doesn't [currently use these features](https://git.sr.ht/~migadu/alps/tree/master/item/cmd/alps/main.go#L79)
+  - the _Alps Webmail Server_ only binds to a single _HTTP_ port (ex: `80`)
+  - when the Docker container runs on [_render.com_](https://render.com/),<br>the _HTTP_ port (ex: `80`) is exposed behind a reverse proxy&hellip;<br>which provides access over both _HTTP_ (port `80`) and _HTTPS_ (port `443`)
 
 - - - -
 
