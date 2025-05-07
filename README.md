@@ -105,6 +105,8 @@ Instance Type         = Free (512 MB RAM, 0.1 CPU)
 Advanced > Environment Variables:
 =================================
 ROOT_PASSWORD    = root
+ALPS_THEME       = alps
+FORCE_ACTIVITY   = 300
 
 MAIL_HOSTNAME    = example.org
 MAIL_DOMAIN      = example.org
@@ -121,9 +123,21 @@ S3_OBJECT_PREFIX = maddy/
 S3_REGION        = 
 S3_CREDS         = 
 
-ALPS_THEME       = alps
-
 </pre>
+
+##### where:
+
+* `ROOT_PASSWORD`
+  - assigns a password to the _root_ user
+  - enables the _SSH_ server
+  - an undefined or empty value causes the _root_ user to not have a password,<br>and the _SSH_ server to not be installed
+* `ALPS_THEME`
+  - can be the name of any subdirectory in [_themes/_](https://git.sr.ht/~migadu/alps/tree/master/item/themes)
+  - an undefined or empty value causes _Alps_ to render HTML using its base theme
+* `FORCE_ACTIVITY`
+  - causes a period HTTP request to _localhost_
+  - the value is the number of seconds between each request (ex: `300` is a 5 minute interval)
+  - an undefined or empty value allows the Docker container to be spun down after a period of inactivity
 
 - - - -
 
@@ -133,3 +147,9 @@ ALPS_THEME       = alps
   - ex: `warren-bank-maddy-email`
   - choose your own
 * the environment variable values
+
+#### Limitations
+
+* [_SSH_](https://render.com/docs/ssh#limitations) is not supported for free plan services
+  - the server is installed and running within the container
+  - external clients are unable to communicate with the server,<br>when the container is hosted on the free tier

@@ -161,7 +161,14 @@ if [ -x /bin/alps ]; then
 fi
 
 # keep the container alive, while the servers run in the background
-sleep infinity
+if [ -n "$FORCE_ACTIVITY" ]; then
+  while true; do
+    sleep "$FORCE_ACTIVITY"
+    curl -s 'http://127.0.0.1:80/' >/dev/null
+  done
+else
+  sleep infinity
+fi
 
 exit 0
 EOENTRY
