@@ -95,7 +95,7 @@ ARG ROOT_PASSWORD=""
 ENV ENABLE_SSHD=${ROOT_PASSWORD:+true}
 
 RUN <<EOF
-  if [ "$ENABLE_SSHD" = "true" ]; then
+  if [ "\$ENABLE_SSHD" = "true" ]; then
     echo "root:${ROOT_PASSWORD}" | chpasswd
 
     mkdir -p /var/run/sshd
@@ -149,7 +149,7 @@ RUN <<EOF
 # alps looks for themes in ./themes
 cd /data
 
-if [ "$ENABLE_SSHD" = "true" -a -x /usr/sbin/sshd ]; then
+if [ "\$ENABLE_SSHD" = "true" -a -x /usr/sbin/sshd ]; then
   echo 'starting SSH server'
   /usr/sbin/sshd &
 fi
@@ -168,12 +168,12 @@ if [ -x /bin/alps ]; then
 fi
 
 # keep the container alive, while the servers run in the background
-if [ -n "$FORCE_ACTIVITY" ]; then
-  echo "heartbeat: periodic network requests will occur at a ${FORCE_ACTIVITY_INTERVAL} second interval"
+if [ -n "\$FORCE_ACTIVITY" ]; then
+  echo "heartbeat: periodic network requests will occur at a \${FORCE_ACTIVITY_INTERVAL} second interval"
   while true; do
-    sleep "$FORCE_ACTIVITY_INTERVAL"
+    sleep "\$FORCE_ACTIVITY_INTERVAL"
     echo 'heartbeat: making periodic network request to force activity'
-    curl -s "$FORCE_ACTIVITY" >/dev/null 2>&1
+    curl -s -k -L "\$FORCE_ACTIVITY" >/dev/null 2>&1
   done
 else
   sleep infinity
