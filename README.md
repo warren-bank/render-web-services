@@ -103,7 +103,7 @@ Advanced > Environment Variables:
 =================================
 ROOT_PASSWORD    = root
 ALPS_THEME       = alps
-FORCE_ACTIVITY   = http://www.kproxy.com/doproxy.jsp?page=https://warren-bank-maddy-email.onrender.com/login
+FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
 
 MAIL_HOSTNAME    = example.org
 MAIL_DOMAIN      = example.org
@@ -136,7 +136,7 @@ S3_CREDS         =
     - default: `300` (ie: every 5 minutes)
   - the value is the URL, which should touch the hosted service in such a way that the container host sees activity
     * clever container hosts only count network requests that originate from the public internet,<br>rather than the internal private network
-    * this example uses a public proxy server to make the network request
+    * this example uses a [reverse proxy server](https://github.com/byu-imaal/dohjs/blob/gh-pages/cors_proxy.js) to make the network request
   - an undefined or empty value allows the Docker container to be spun down after a period of inactivity
 
 - - - -

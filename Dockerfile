@@ -173,7 +173,7 @@ if [ -n "\$FORCE_ACTIVITY" ]; then
   while true; do
     sleep "\$FORCE_ACTIVITY_INTERVAL"
     echo 'heartbeat: making periodic network request to force activity'
-    curl -s -k -L "\$FORCE_ACTIVITY" >/dev/null 2>&1
+    curl -s -k -L -H 'Origin: http://localhost:80' "\$FORCE_ACTIVITY" >/dev/null 2>&1
   done
 else
   sleep infinity
