@@ -153,3 +153,11 @@ S3_CREDS         =
 * [_SSH_](https://render.com/docs/ssh#limitations) is not supported for free plan services
   - the server is installed and running within the container
   - external clients are unable to communicate with the server,<br>when the container is hosted on the free tier
+* [multiple ports](https://render.com/docs/web-services#binding-to-multiple-ports) cannot be exposed to the public internet
+  - Render forwards inbound traffic to only one HTTP port per web service
+  - a web service can bind to additional ports to receive traffic over the [private network](https://render.com/docs/private-network)
+
+#### Conclusions
+
+* [_render.com_](https://render.com/) is great!
+* however&hellip; it's not a good fit for hosting this particular container
