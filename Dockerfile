@@ -138,6 +138,10 @@ ENTRYPOINT [ "/bin/entry_point.sh" ]
 
 ARG ALPS_THEME=""
 
+# default interval: 5 minutes
+ENV FORCE_ACTIVITY=""
+ENV FORCE_ACTIVITY_INTERVAL="300"
+
 RUN <<EOF
   cat >'/bin/entry_point.sh' <<EOENTRY
 #!/bin/sh
@@ -165,9 +169,11 @@ fi
 
 # keep the container alive, while the servers run in the background
 if [ -n "$FORCE_ACTIVITY" ]; then
+  echo "heartbeat: periodic network requests will occur at a ${FORCE_ACTIVITY_INTERVAL} second interval"
   while true; do
-    sleep "$FORCE_ACTIVITY"
-    curl -s 'http://127.0.0.1:80/' >/dev/null
+    sleep "$FORCE_ACTIVITY_INTERVAL"
+    echo 'heartbeat: making periodic network request to force activity'
+    curl -s "$FORCE_ACTIVITY" >/dev/null 2>&1
   done
 else
   sleep infinity
