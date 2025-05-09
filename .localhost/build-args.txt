@@ -1,0 +1,20 @@
+ROOT_PASSWORD    = root
+ALPS_THEME       = alps
+#INIT_COMMAND     = maddy creds create 'postmaster@example.org' --hash 'bcrypt' --password 'postmaster' && maddy imap-acct create 'postmaster@example.org'
+#FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
+#PORT             = 80
+
+MAIL_HOSTNAME    = example.org
+MAIL_DOMAIN      = example.org
+
+#SQL_DRIVER       = postgres
+#SQL_DSN          = host=postgres.example.org port=5432 sslmode=verify-full user=maddy password=maddy dbname=maddy
+
+#S3_ENDPOINT      = s3.example.org
+#S3_SECURE        = yes
+#S3_ACCESS_KEY    = Q3AM3UQ867SPQQA43P2F
+#S3_SECRET_KEY    = zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+#S3_BUCKET        = maddy-email
+#S3_OBJECT_PREFIX = maddy/
+#S3_REGION        = 
+#S3_CREDS         = 
