@@ -1,6 +1,6 @@
 ROOT_PASSWORD    = root
 ALPS_THEME       = alps
-#INIT_COMMAND     = maddy creds create 'postmaster@example.org' --hash 'bcrypt' --password 'postmaster' && maddy imap-acct create 'postmaster@example.org'
+#INIT_COMMAND     = maddy creds create --hash 'bcrypt' --password 'postmaster' 'postmaster@example.org' && maddy imap-acct create 'postmaster@example.org'
 #FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
 #PORT             = 80
 

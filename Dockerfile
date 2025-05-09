@@ -175,8 +175,10 @@ EOF
 # --------------------------------------------------------------------
 # optional/final user-defined build commands
 
-ENV INIT_COMMAND=""
+ARG INIT_COMMAND=""
 
-if [ -n "$INIT_COMMAND" ]; then
-  /bin/sh -c "$INIT_COMMAND"
-fi
+RUN <<EOF
+  if [ -n "$INIT_COMMAND" ]; then
+    /bin/sh -c "$INIT_COMMAND"
+  fi
+EOF

@@ -21,4 +21,4 @@ while IFS= read -r line; do
   fi
 done < "${DIR}/build-args.txt"
 
-docker buildx build --progress=plain "${opts[@]}" -t 'maddy-email' .
+docker buildx build --progress=plain "${opts[@]}" -t 'maddy-email' --load .

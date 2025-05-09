@@ -103,7 +103,7 @@ Advanced > Environment Variables:
 =================================
 ROOT_PASSWORD    = root
 ALPS_THEME       = alps
-INIT_COMMAND     = maddy creds create 'postmaster@example.org' --hash 'bcrypt' --password 'postmaster' && maddy imap-acct create 'postmaster@example.org'
+INIT_COMMAND     = maddy creds create --hash 'bcrypt' --password 'postmaster' 'postmaster@example.org' && maddy imap-acct create 'postmaster@example.org'
 FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
 PORT             = 80
 
@@ -144,7 +144,7 @@ S3_CREDS         =
     * this example uses a [reverse proxy server](https://github.com/byu-imaal/dohjs/blob/gh-pages/cors_proxy.js) to make the network request
   - an undefined or empty value allows the Docker container to be spun down after a period of inactivity
 * `PORT`
-  - not used by _DOCKERFILE_
+  - not used by [_Dockerfile_](./Dockerfile)
   - [hint](https://render.com/docs/web-services#binding-to-multiple-ports) to Render
 
 - - - -
