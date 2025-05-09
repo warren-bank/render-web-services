@@ -82,9 +82,6 @@ RUN set -ex && \
     apk upgrade --no-cache --available && \
     apk add --no-cache ca-certificates
 
-# not required. hint to Docker.
-ENV PORT="80"
-
 ARG MAIL_HOSTNAME=""
 ENV MADDY_HOSTNAME="$MAIL_HOSTNAME"
 
@@ -95,7 +92,7 @@ ARG ROOT_PASSWORD=""
 ENV ENABLE_SSHD=${ROOT_PASSWORD:+true}
 
 RUN <<EOF
-  if [ "\$ENABLE_SSHD" = "true" ]; then
+  if [ "$ENABLE_SSHD" = "true" ]; then
     echo "root:${ROOT_PASSWORD}" | chpasswd
 
     mkdir -p /var/run/sshd
@@ -138,8 +135,6 @@ ENTRYPOINT [ "/bin/entry_point.sh" ]
 
 ARG ALPS_THEME=""
 
-ENV INIT_COMMAND=""
-
 # default interval: 5 minutes
 ENV FORCE_ACTIVITY=""
 ENV FORCE_ACTIVITY_INTERVAL="300"
@@ -169,11 +164,6 @@ if [ -x /bin/alps ]; then
   /bin/alps -theme "$ALPS_THEME" -addr ":80" "imap+insecure://127.0.0.1:143" "smtp+insecure://127.0.0.1:587" &
 fi
 
-# allow the user to run initialization commands
-if [ -n "\$INIT_COMMAND" ]; then
-  /bin/sh -c "\$INIT_COMMAND"
-fi
-
 # keep the container alive, while the servers run in the background
 if [ -n "\$FORCE_ACTIVITY" ]; then
   echo "heartbeat: periodic network requests will occur at a \${FORCE_ACTIVITY_INTERVAL} second interval"
@@ -190,3 +180,12 @@ exit 0
 EOENTRY
   chmod 755 /bin/entry_point.sh
 EOF
+
+# --------------------------------------------------------------------
+# optional/final user-defined build commands
+
+ENV INIT_COMMAND=""
+
+if [ -n "$INIT_COMMAND" ]; then
+  /bin/sh -c "$INIT_COMMAND"
+fi

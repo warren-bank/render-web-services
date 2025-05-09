@@ -105,6 +105,7 @@ ROOT_PASSWORD    = root
 ALPS_THEME       = alps
 INIT_COMMAND     = maddy creds create 'postmaster@example.org' --hash 'bcrypt' --password 'postmaster' && maddy imap-acct create 'postmaster@example.org'
 FORCE_ACTIVITY   = https://cors.dohjs.workers.dev/https://warren-bank-maddy-email.onrender.com/login
+PORT             = 80
 
 MAIL_HOSTNAME    = example.org
 MAIL_DOMAIN      = example.org
@@ -133,7 +134,7 @@ S3_CREDS         =
   - can be the name of any subdirectory in [_themes/_](https://git.sr.ht/~migadu/alps/tree/master/item/themes)
   - an undefined or empty value causes _Alps_ to render HTML using its base theme
 * `INIT_COMMAND`
-  - is an arbitrary inline command (or sequence of commands) to execute in a shell during initialization of the container
+  - is an arbitrary inline command (or sequence of commands) to execute in a shell after all other build commands have finished
   - an undefined or empty value is ignored
 * `FORCE_ACTIVITY`
   - causes a period HTTP request at `FORCE_ACTIVITY_INTERVAL` second intervals
@@ -142,6 +143,9 @@ S3_CREDS         =
     * clever container hosts only count network requests that originate from the public internet,<br>rather than the internal private network
     * this example uses a [reverse proxy server](https://github.com/byu-imaal/dohjs/blob/gh-pages/cors_proxy.js) to make the network request
   - an undefined or empty value allows the Docker container to be spun down after a period of inactivity
+* `PORT`
+  - not used by _DOCKERFILE_
+  - [hint](https://render.com/docs/web-services#binding-to-multiple-ports) to Render
 
 - - - -
 
