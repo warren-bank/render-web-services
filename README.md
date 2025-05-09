@@ -18,7 +18,7 @@
    * [git repo](https://git.sr.ht/~migadu/alps)
    * relevant docs:
      - [command-line options](https://git.sr.ht/~migadu/alps/tree/master/item/docs/cli.md)
-3. _OpenSSH_
+3. _Dropbear SSH Server_
 
 #### Exposed Ports
 

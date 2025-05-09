@@ -67,7 +67,7 @@ RUN command install -m 0755 /tmp/build_alps/alps /pkg/usr/local/bin
 ARG ALPS_THEME=""
 
 RUN <<EOF
-  if [ -n "$ALPS_THEME" -a -d "/alps/themes/${ALPS_THEME}" ]; then
+  if [ -n "$ALPS_THEME" ] && [ -d "/alps/themes/${ALPS_THEME}" ]; then
     mkdir -p /pkg/data/themes
     mv "/alps/themes/${ALPS_THEME}" "/pkg/data/themes/${ALPS_THEME}"
   fi
@@ -95,17 +95,8 @@ RUN <<EOF
   if [ "$ENABLE_SSHD" = "true" ]; then
     echo "root:${ROOT_PASSWORD}" | chpasswd
 
-    mkdir -p /var/run/sshd
-    mkdir -p  ~root/.ssh
-    chmod 700 ~root/.ssh/
-
-    apk add --no-cache --update openssh
-    ssh-keygen -A
-
-    # sshd_config
-    sed -i 's/^#?\(PermitRootLogin\) .*$/\1 yes/'        /etc/ssh/sshd_config
-    sed -i 's/^#?\(PasswordAuthentication\) .*$/\1 yes/' /etc/ssh/sshd_config
-    sed -i 's/^#?\(UsePAM\) .*$/\1 no/'                  /etc/ssh/sshd_config
+    apk add --no-cache --update dropbear
+    mkdir -p /etc/dropbear
   fi
 EOF
 
@@ -146,9 +137,9 @@ RUN <<EOF
 # alps looks for themes in ./themes
 cd /data
 
-if [ "\$ENABLE_SSHD" = "true" -a -x /usr/sbin/sshd ]; then
+if [ "\$ENABLE_SSHD" = "true" ] && [ -x /usr/sbin/dropbear ]; then
   echo 'starting SSH server'
-  /usr/sbin/sshd &
+  /usr/sbin/dropbear -R -a -p 0.0.0.0:22 &
 fi
 
 if [ -x /bin/maddy ]; then
