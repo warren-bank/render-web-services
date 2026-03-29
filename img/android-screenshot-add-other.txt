@@ -1,0 +1,2 @@
+https://docs.ntfy.sh/static/img/android-screenshot-add-other.png
+https://github.com/binwiederhier/ntfy/raw/v2.20.1/docs/static/img/android-screenshot-add-other.png
